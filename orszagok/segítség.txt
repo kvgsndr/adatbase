@@ -1,0 +1,6 @@
+﻿karakterkészlet: latin2
+
+
+create database orszag
+default character set latin2 
+collate latin2_hungarian_ci;

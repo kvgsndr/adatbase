@@ -1,0 +1,75 @@
+Stadionok
+A stadionok.csv állomány (;-kel tagolt utf-8 kódolású) néhány futball stadion adatát tartalmazza. Az állomány egy-egy sorában egy azonosító, a stadion neve, befogadó képessége, a város neve, illetve az átadásának évszáma szerepel. Feltételezheti, hogy minden sorban mind az ötadat hiánytalanul szerepel.
+Hozza létre a Stadionok nevû táblát.
+Importálja a fájl adatait a táblába!
+Készítsen lekérdezéseket, melyeket mentsen a megoldas.txt
+
+1.	Meghatározza, hogy hány stadion adata szerepel az állományban.
+SELECT COUNT(*)
+FROM `stadionok`;
+
+2.	Meghatározza, hogy hány stadionja van Barcelonának.
+SELECT count(*)
+FROM `stadionok`
+WHERE `varos` = 'Barcelona';
+
+3.	Listázza Budapest stadionjait a stadionok neve szerint ábécé rendben.
+SELECT `nev`
+FROM `stadionok`
+WHERE `varos` = 'Budapest'
+ORDER BY `nev` ASC;
+
+4.	Megadja Budapest stadionjainak számát.
+SELECT COUNT(*) 
+FROM `stadionok` 
+WHERE `varos` = 'Budapest'
+
+5.	Megadja Budapest „legfiatalabb” stadionjának nevét.
+SELECT `nev`
+FROM `stadionok`
+WHERE `varos` = 'Budapest'
+ORDER by `ev` DESC limit 1;
+
+6.	Melyik az állomány „legfiatalabb” stadionja?
+SELECT `nev`
+FROM `stadionok`
+ORDER by `ev` DESC LIMIT 1;
+
+7.	Melyik az állomány „legidõsebb” stadionja?
+SELECT `nev`
+FROM `stadionok`
+ORDER by `ev` ASC LIMIT 1;
+
+8.	Melyik stadion képes a legtöbb nézõt befogadni?
+SELECT `nev`
+FROM `stadionok`
+ORDER by `befogado_kepesseg` DESC LIMIT 1;
+
+9.	Melyik stadion képes a legkevesebb nézõt befogadni?
+SELECT `nev`
+FROM `stadionok`
+ORDER by `befogado_kepesseg` ASC LIMIT 1;
+
+10.	Átlagosan mennyi a stadionok befogadóképessége?
+SELECT AVG(`befogado_kepesseg`) 
+FROM `stadionok`
+
+11.	Átlagosan hány évesek az állomány stadionjai?
+SELECT AVG(2020-`ev`) 
+FROM `stadionok`
+
+12.	Városonként mutasd meg a stadionok számát, de csak azokat a városokat, ahol egynél több stadion található.
+SELECT `varos`, COUNT(*)
+FROM `stadionok` 
+GROUP BY `varos`
+HAVING COUNT(*)>1;
+
+13.	Mennyi a londoni ill. a moszkvai (moscow) stadionok átlagos nézõszáma?
+SELECT `varos`,AVG(`befogado_kepesseg`)
+FROM `stadionok` 
+GROUP BY `varos` = 'London', 'Moscow'
+HAVING COUNT(*)>1
+
+14.	Melyik városnak van a legtöbb stadionja?
+
+15.	Listázd ki azkat a stadionokat, amelyek ugyanabban a városban vannak, mint a "Craven Cottage" nevû stadion.
