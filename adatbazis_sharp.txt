@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Data;
 using MySql.Data.MySqlClient;
 
@@ -6,13 +6,13 @@ namespace adatbazis_kapcsolat
 {
     class MainClass
     {
-        public static string adatok ="Server=localhost;" +
+        public static string connectionString ="Server=localhost;" +
                                     "Database=12C_telefonok;" +
                                     "UserID=12C_inf;" +
                                     "Password=123456;" +
                                     "SslMode=none;";
 
-        public static MySqlConnection kapcsolat = new MySqlConnection(adatok); 
+        public static MySqlConnection kapcsolat = new MySqlConnection(connectionString); 
        
 
         public static void Main(string[] args)
